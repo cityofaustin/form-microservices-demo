@@ -1,0 +1,59 @@
+<%= render 'loading_div' %>
+
+<div class="usa-grid">
+  <div width="usa-width-one-whole">
+    <h2>Github Issue CreationForm</h2>
+  </div>
+</div>
+
+<div class="usa-grid">
+  <div class="usa-width-one-whole">
+    <div id="response_message" class="usa-alert usa-alert-info">
+      <div id="response_body" class="usa-alert-body"></div>
+    </div>
+  </div>
+</div>
+
+<form action="<%= @destination_url %>/process/" id="coaform" class="usa-grid">
+  <div class="usa-width-one-half">
+    <h3>Form fields</h3>
+    
+    <fieldset>
+      <legend>Issue information</legend>   
+      <label for="title">Title</label>
+      <input id="title" name="title" value="Styles not showing up">
+      
+      <label for="body">Description</label>
+      <textarea id="body" name="body">When I load the page it doesn't contain any styling</textarea>
+    </fieldset>
+  </div>
+
+  <div class="usa-width-one-half">
+    <h3>Configuration</h3>
+
+    <fieldset>
+      <legend>Global (Required for all forms)</legend>
+  
+      <label for="form-action">Submit to this server:</label>
+      <input id="form-action" name="form-action" value="<%=@destination_url %>">
+  
+      <label for="form-destination">Deliver to this microservice:</label>
+      <select id="form-destination" name="destination">
+        <option value="email" disabled>Email</option>
+        <option value="githubIssue">GitHub Issue</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>GitHub-specific (Required by the Github microservice)</legend>
+  
+      <label for="repository">Create an Issue in this repository:</label>
+      <input type="text" name="repository" value="api-github-issue">
+    </fieldset>
+
+
+    <input type="submit" value="Submit" id="submit">
+  </div>
+</form>
+
+<%= render 'ajax_methods' %>

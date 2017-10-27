@@ -1,0 +1,31 @@
+<script>
+  $(document).ready(function(){
+    var $loading = $('#loadingDiv');
+    var $response_message = $('#response_message');
+    $loading.hide();
+    $response_message.hide();
+    $("#submit").on('click', function(event){
+      event.preventDefault();
+      var $form = $("#coaform");
+      var $url = $form.attr("action");
+      var $data = $form.serialize();
+      $loading.show();
+      $.ajax({
+        type: 'POST',
+        url: $url,
+        data: $data,
+        dataType: 'json',
+        success: function(xhr){
+          $("#response_body").text(xhr.body);
+          $response_message.show();
+          $loading.hide();
+        },
+        error: function(xhr, resp, text) {
+          $("#response_body").text(xhr.body);
+          $response_message.show();
+          $loading.hide();
+        }
+      });
+    });
+  });
+</script>

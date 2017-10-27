@@ -1,0 +1,66 @@
+<%= render 'loading_div' %>
+
+<div class="usa-grid">
+  <div width="usa-width-one-whole">
+    <h2>Email Delivery Form</h2>
+  </div>
+</div>
+
+<div id="response_message" class="usa-alert usa-alert-info">
+  <div id="response_body" class="usa-alert-body"></div>
+</div>
+
+<form action="<%= @destination_url %>/process/" id="coaform" class="usa-grid">
+  <div class="usa-width-one-half">
+    <h3>Form fields</h3>
+    
+    <fieldset>
+      <legend>Basic Information</legend>   
+      <label for="name">Name</label>
+      <input id="name" value="Matt Langan">
+      <label for="home_type">Home type</label>
+      <select name="home_type">
+        <% 
+          options = ["Apartment", "Condo/Townhome", "Duplex", "House", "Mobile Home"]
+          options.each do |option| %>
+          <option value="<%= option %>"><%= option %></option>
+        <% end %>
+      </select>
+        <input name="animal" id="dog" type="radio" value="Dog">
+        <label for="dog">Interested in Dogs</label>
+        
+        <input name="animal" id="cat" type="radio" id="cat" value="Cat">
+        <label for="cat">Interested in Cats</label>
+    </fieldset>
+  </div>
+
+  <div class="usa-width-one-half">
+    <h3>Configuration</h3>
+
+    <fieldset>
+      <legend>Global (Required for all forms)</legend>
+  
+      <label for="form-action">Submit to this server:</label>
+      <input id="form-action" name="form-action" value="<%=@destination_url %>">
+  
+      <label for="form-destination">Deliver to this microservice:</label>
+      <select id="form-destination" name="destination">
+        <option value="email">Email</option>
+        <option value="githubIssue" disabled>GitHub Issue</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>Email-specific (Required by the email microservice)</legend>
+  
+      <label for="deliver_to">Send submission to this email address:</label>
+      <input type="text" name="deliver_to" id="deliver_to" value="matt.langan@austintexas.gov">
+      <span style="color:white;">mattlanganatx+snvfjypjgcts1bnxkded@boards.trello.com</span>
+    </fieldset>
+
+
+    <input type="submit" value="Submit" id="submit">
+  </div>
+</form>
+
+<%= render 'ajax_methods' %>

@@ -17,12 +17,17 @@
         dataType: 'json',
         success: function(xhr){
           $("#response_body").text(xhr.body);
-          $("#github_link").attr("href", xhr.url);
+          if (xhr.url) {
+            $("#github_link").attr("href", xhr.url);
+          } else {
+            $("#github_link").hide();
+          }
           $response_message.show();
           $loading.hide();
         },
         error: function(xhr, resp, text) {
           $("#response_body").text(xhr.body);
+          $("#github_link").hide();
           $response_message.show();
           $loading.hide();
         }

@@ -17,6 +17,7 @@
         dataType: 'json',
         success: function(xhr){
           $("#response_body").text(xhr.body);
+          $("#github_link").attr("href", xhr.url);
           $response_message.show();
           $loading.hide();
         },

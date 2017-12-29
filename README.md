@@ -1,24 +1,9 @@
-# README
+# Microservices Demo Site
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[https://coa-test-form-client.herokuapp.com](https://coa-test-form-client.herokuapp.com)
 
-Things you may want to cover:
+This site is a demo and sandbox for the form microservices. It sends requests to the Dispatcher, which then relays them to the appropriate microservice.
 
-* Ruby version
+It is meant to showcase functionality of the microservices by providing a configurable request to the microservices (via form submission) and rendering the server response on the page.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+It is deployed on Heroku.
